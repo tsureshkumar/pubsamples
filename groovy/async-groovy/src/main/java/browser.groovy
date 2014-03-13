@@ -1,3 +1,9 @@
+// copyright: tsureshkumar@gmail.com
+// all rights reserved
+// 
+// run with the following jars in classpath
+// groovy  -classpath groovy-all-2.2.2.jar:.:rxjava-core-0.17.0-RC6.jar:rxjava-swing-0.17.0-RC6.jar:rxjava-groovy-0.17.0-RC6.jar browser.groovy
+//
 import groovy.swing.SwingBuilder
 import rx.Observable
 import rx.Subscription
