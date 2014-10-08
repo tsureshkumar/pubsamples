@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Angularjs Hello World</title>
+  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.1/angular.js'></script>
+  <script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.1/angular-route.js'></script>
+  <script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js'></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div ng-app="myapp">
+    <div ng-controller="helloCtrl">
+	<ul class="nav nav-tabs">
+		<li><a href='#/'>Hello</a></li>
+		<li><a href='#/about'>About</a></li>
+	</ul>
+	<div ng-view=""/>
+    </div>
+</div>
+<script>
+var myapp = angular.module("myapp", ["ngRoute"]);
+
+myapp.config(function ($routeProvider) {
+	$routeProvider
+		.when('/', {
+			templateUrl : 'views/hello.html',
+			controller: 'helloCtrl',
+		})
+		.when('/about', {
+			templateUrl : 'views/about.html',
+			controller: 'aboutController',
+		})
+});
+
+var myCtrl = myapp.controller('helloCtrl', ['$scope', function ($scope) {
+    $scope.name = "Suresh";
+    $scope.num = 10;
+}]);
+</script>
+</body>
+</html>
+
+
+

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Angularjs Hello World</title>
+  <script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.1/angular.js'></script>
+</head>
+<body>
+  <div ng-app="myapp">
+    <div ng-controller="weatherCtrl">
+	<div>City:</div>
+	<input id='city' ng-model='city'/>
+	<button ng-click="update()">Update</button>
+	<div>Weather @ {{city}} is {{celcius}}</div>
+    </div>
+</div>
+<script>
+var myapp = angular.module("myapp", []);
+
+var myCtrl = myapp.controller('weatherCtrl', ['$scope', '$http', function ($scope, $http) {
+    $scope.city = "Bangalore";
+    $scope.celcius = "not available";
+    $scope.update = function () {
+	 $http.get("http://api.openweathermap.org/data/2.5/weather?units=metric&q=" + $scope.city).success(function (res) {
+	console.log(res);
+	 $scope.celcius = res.main.temp + "\xB0C";
+	});
+	};
+}]);
+</script>
+</body>
+</html>
+
+
+
